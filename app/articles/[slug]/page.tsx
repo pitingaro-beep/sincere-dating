@@ -1,0 +1,250 @@
+import Link from "next/link";
+import { getArticleBySlug, getAllArticles } from "@/lib/articles";
+import { notFound } from "next/navigation";
+
+type Props = {
+  params: Promise<{ slug: string }>;
+};
+
+export async function generateStaticParams() {
+  const articles = getAllArticles();
+  return articles.map((article) => ({
+    slug: article.slug,
+  }));
+}
+
+export async function generateMetadata({ params }: Props) {
+  const { slug } = await params;
+  const article = getArticleBySlug(slug);
+  if (!article) return {};
+  return {
+    title: `${article.title} | 誠実な出会いナビ`,
+    description: article.excerpt,
+  };
+}
+
+export default async function ArticlePage({ params }: Props) {
+  const { slug } = await params;
+  const article = getArticleBySlug(slug);
+
+  if (!article) {
+    notFound();
+  }
+
+  // マークダウン的な見出し・段落をHTMLに変換（シンプル実装）
+  const formatContent = (content: string) => {
+    return content
+      .split("\n\n")
+      .map((block, i) => {
+        if (block.startsWith("## ")) {
+          return (
+            <h2
+              key={i}
+              className="text-xl font-bold text-gray-800 mt-10 mb-4 pb-2 border-b-2 border-pink-100"
+            >
+              {block.replace("## ", "")}
+            </h2>
+          );
+        }
+        if (block.startsWith("**") && block.endsWith("**")) {
+          return (
+            <p key={i} className="font-bold text-gray-800 mt-6 mb-2">
+              {block.replace(/\*\*/g, "")}
+            </p>
+          );
+        }
+        // チェックリスト（- [ ]）
+        if (block.includes("- [ ]")) {
+          const items = block.split("\n").filter((l) => l.startsWith("- [ ]"));
+          return (
+            <ul key={i} className="my-4 space-y-2">
+              {items.map((item, j) => (
+                <li key={j} className="flex items-start gap-2 text-gray-600">
+                  <span className="mt-0.5 w-4 h-4 flex-shrink-0 border-2 border-pink-300 rounded inline-block" />
+                  <span>{item.replace("- [ ] ", "")}</span>
+                </li>
+              ))}
+            </ul>
+          );
+        }
+        // 箇条書き（- から始まる行）
+        if (block.startsWith("- ")) {
+          const items = block.split("\n").filter((l) => l.startsWith("- "));
+          return (
+            <ul key={i} className="my-4 space-y-2 list-none pl-0">
+              {items.map((item, j) => (
+                <li key={j} className="flex items-start gap-2 text-gray-600">
+                  <span className="text-pink-400 mt-0.5">•</span>
+                  <span>{item.replace("- ", "")}</span>
+                </li>
+              ))}
+            </ul>
+          );
+        }
+        // 番号付きリスト
+        if (/^\d+\./.test(block)) {
+          const items = block.split("\n").filter((l) => /^\d+\./.test(l));
+          return (
+            <ol key={i} className="my-4 space-y-2 list-decimal list-inside">
+              {items.map((item, j) => (
+                <li key={j} className="text-gray-600">
+                  {item.replace(/^\d+\.\s*/, "")}
+                </li>
+              ))}
+            </ol>
+          );
+        }
+        // 強調テキストのある通常段落
+        if (block.includes("**")) {
+          const parts = block.split(/(\*\*[^*]+\*\*)/g);
+          return (
+            <p key={i} className="text-gray-600 leading-relaxed my-3">
+              {parts.map((part, j) => {
+                if (part.startsWith("**") && part.endsWith("**")) {
+                  return (
+                    <strong key={j} className="font-bold text-gray-800">
+                      {part.replace(/\*\*/g, "")}
+                    </strong>
+                  );
+                }
+                return <span key={j}>{part}</span>;
+              })}
+            </p>
+          );
+        }
+        // 通常段落
+        if (block.trim()) {
+          return (
+            <p key={i} className="text-gray-600 leading-relaxed my-3">
+              {block}
+            </p>
+          );
+        }
+        return null;
+      })
+      .filter(Boolean);
+  };
+
+  const allArticles = getAllArticles();
+  const relatedArticles = allArticles
+    .filter((a) => a.slug !== article.slug)
+    .slice(0, 3);
+
+  return (
+    <div>
+      {/* 記事ヘッダー */}
+      <section
+        style={{ background: "linear-gradient(135deg, #FDE8EE 0%, #fff0f5 100%)" }}
+        className="py-12 px-4"
+      >
+        <div className="max-w-3xl mx-auto">
+          <div className="flex items-center gap-2 mb-4 text-sm text-gray-500">
+            <Link href="/" className="hover:text-pink-500 transition-colors">
+              ホーム
+            </Link>
+            <span>›</span>
+            <Link
+              href="/articles"
+              className="hover:text-pink-500 transition-colors"
+            >
+              記事一覧
+            </Link>
+            <span>›</span>
+            <span className="text-gray-400 truncate max-w-xs">{article.title}</span>
+          </div>
+          <span className="inline-block text-xs text-pink-500 bg-white px-3 py-1 rounded-full mb-4 shadow-sm">
+            {article.category}
+          </span>
+          <h1 className="text-2xl md:text-3xl font-bold text-gray-800 leading-tight mb-4">
+            {article.title}
+          </h1>
+          <p className="text-gray-500 text-sm">{article.date}</p>
+        </div>
+      </section>
+
+      {/* 記事本文 */}
+      <section className="py-12 px-4">
+        <div className="max-w-3xl mx-auto">
+          <div className="bg-white rounded-2xl shadow-sm border border-pink-50 p-6 md:p-10">
+            {/* リード文 */}
+            <div className="bg-pink-50 border-l-4 border-pink-300 rounded-r-xl p-4 mb-8">
+              <p className="text-gray-600 leading-relaxed text-sm">{article.excerpt}</p>
+            </div>
+            {/* 本文 */}
+            <div className="prose-sm max-w-none">
+              {formatContent(article.content)}
+            </div>
+          </div>
+
+          {/* Omiai バナー（記事内） */}
+          <div
+            className="rounded-2xl p-6 md:p-8 my-10 text-center shadow-sm"
+            style={{
+              background: "linear-gradient(135deg, #F8A4B8 0%, #E07090 100%)",
+            }}
+          >
+            <p className="text-white text-xs mb-2 opacity-80">PR・アフィリエイト</p>
+            <p className="text-white font-bold text-lg mb-2">
+              誠実な出会いを求めるなら Omiai
+            </p>
+            <p className="text-white text-sm opacity-90 mb-5">
+              本人確認が厳しく、真剣な出会いを求める方が集まるアプリです。
+              <br />
+              女性は完全無料でご利用いただけます。
+            </p>
+            <a
+              href="https://www.omiai-ibj.com/"
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+              className="inline-block bg-white hover:bg-gray-50 text-pink-500 font-bold py-3 px-8 rounded-full transition-colors shadow-md"
+            >
+              Omiaiを無料で始める →
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* 関連記事 */}
+      <section className="py-12 px-4 bg-pink-50">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-xl font-bold text-gray-800 mb-8 text-center">
+            関連記事
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {relatedArticles.map((related) => (
+              <Link
+                key={related.slug}
+                href={`/articles/${related.slug}`}
+                className="block bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-pink-50 overflow-hidden group"
+              >
+                <div
+                  className="h-2 w-full"
+                  style={{
+                    background: "linear-gradient(90deg, #F8A4B8, #E07090)",
+                  }}
+                />
+                <div className="p-4">
+                  <span className="inline-block text-xs text-pink-500 bg-pink-50 px-2 py-1 rounded-full mb-2">
+                    {related.category}
+                  </span>
+                  <h3 className="font-bold text-gray-800 text-sm leading-snug group-hover:text-pink-500 transition-colors">
+                    {related.title}
+                  </h3>
+                  <p className="text-xs text-gray-400 mt-2">{related.date}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+          <div className="text-center mt-8">
+            <Link
+              href="/articles"
+              className="inline-block text-pink-500 hover:text-pink-600 font-medium border border-pink-300 px-8 py-3 rounded-full transition-colors"
+            >
+              すべての記事を見る →
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
