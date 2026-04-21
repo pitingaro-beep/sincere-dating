@@ -116,7 +116,7 @@ export default function RootLayout({
               © 2026 誠実な出会いナビ. All rights reserved.
             </p>
             <p className="text-center text-xs text-gray-400 mt-2">
-              ※当サイトはOmiaiのアフィリエイトプログラムに参加しています。
+              ※当サイトはOmiai・marrish（マリッシュ）のアフィリエイトプログラムに参加しています。
             </p>
           </div>
         </footer>

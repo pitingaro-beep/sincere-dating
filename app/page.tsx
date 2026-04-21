@@ -171,6 +171,71 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* marrish紹介バナー */}
+      <section className="py-16 px-4" style={{ background: "#FDF7F9" }}>
+        <div className="max-w-3xl mx-auto">
+          <p className="text-center text-xs text-gray-400 mb-6 uppercase tracking-widest">PR・アフィリエイト</p>
+          <h2 className="text-2xl font-bold text-center text-gray-800 mb-2">
+            再婚・バツイチも歓迎
+          </h2>
+          <p className="text-center text-gray-500 mb-8 text-sm">
+            marrishは恋活・婚活・再婚活を応援するマッチングアプリです
+          </p>
+          <div className="flex justify-center mb-6">
+            <a
+              href="https://px.a8.net/svt/ejp?a8mat=4B1QDV+5O7P9U+3N2M+75EZ5"
+              rel="nofollow"
+              target="_blank"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                border={0}
+                width={600}
+                height={200}
+                alt="恋活・婚活・再婚活マッチング【マリッシュ】"
+                src="https://www25.a8.net/svt/bgt?aid=260421331343&wid=001&eno=01&mid=s00000016987001201000&mc=1"
+                style={{ maxWidth: "100%", height: "auto" }}
+              />
+            </a>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              border={0}
+              width={1}
+              height={1}
+              src="https://www16.a8.net/0.gif?a8mat=4B1QDV+5O7P9U+3N2M+75EZ5"
+              alt=""
+            />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center text-sm text-gray-600">
+            <div className="bg-white rounded-2xl p-4 shadow-sm border border-pink-50">
+              <div className="text-2xl mb-2">💍</div>
+              <p className="font-bold text-gray-800 mb-1">真剣な出会い</p>
+              <p className="text-xs">婚活・再婚活に特化した真剣なユーザーが集まります</p>
+            </div>
+            <div className="bg-white rounded-2xl p-4 shadow-sm border border-pink-50">
+              <div className="text-2xl mb-2">👨‍👧</div>
+              <p className="font-bold text-gray-800 mb-1">シンパパ・シンママ優遇</p>
+              <p className="text-xs">子連れの方も安心して利用できる優遇プログラムあり</p>
+            </div>
+            <div className="bg-white rounded-2xl p-4 shadow-sm border border-pink-50">
+              <div className="text-2xl mb-2">✅</div>
+              <p className="font-bold text-gray-800 mb-1">本人確認あり</p>
+              <p className="text-xs">身分証確認で安心・安全な出会いをサポート</p>
+            </div>
+          </div>
+          <div className="text-center mt-8">
+            <a
+              href="https://px.a8.net/svt/ejp?a8mat=4B1QDV+5O7P9U+3N2M+75EZ5"
+              rel="nofollow"
+              target="_blank"
+              className="inline-block bg-pink-400 hover:bg-pink-500 text-white font-bold py-4 px-10 rounded-full transition-colors shadow-md text-lg"
+            >
+              marrishを無料で始める →
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
