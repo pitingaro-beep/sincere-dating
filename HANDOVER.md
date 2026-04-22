@@ -1,0 +1,175 @@
+# 誠実な出会いナビ 引き継ぎドキュメント
+最終更新：2026-04-22
+
+---
+
+## プロジェクト概要
+
+- **サイト名：** 誠実な出会いナビ
+- **URL：** https://sincere-dating.jp
+- **目的：** マッチングアプリ（Omiai・マリッシュ）のアフィリエイト収益化
+- **ターゲット：** 20〜40代女性・婚活中・マッチングアプリ利用者
+- **技術スタック：** Next.js（App Router）・TypeScript・Tailwind CSS・Vercel
+
+---
+
+## ディレクトリ構成
+
+```
+/Users/hirokiwashio/sincere-dating/
+├── app/
+│   ├── layout.tsx          # ヘッダー・フッター・GA・GSC設定
+│   ├── page.tsx            # トップページ
+│   ├── sitemap.ts          # サイトマップ自動生成
+│   ├── articles/
+│   │   ├── page.tsx        # 記事一覧ページ
+│   │   └── [slug]/
+│   │       └── page.tsx    # 記事詳細ページ（affiliateバナー含む）
+│   ├── about-omiai/        # Omiaiについてページ
+│   └── profile/            # プロフィールページ
+├── lib/
+│   └── articles.ts         # 全記事データ（★ここに記事を追加する）
+├── SNS運用プラン.md         # X投稿プラン・投稿文コピペ用
+└── HANDOVER.md             # このファイル
+```
+
+---
+
+## デプロイ
+
+- **プラットフォーム：** Vercel
+- **GitHub連携：** mainブランチにpushすると自動デプロイ
+- **手順：** ファイル編集 → git add → git commit → git push origin main
+
+---
+
+## アフィリエイト設定
+
+| サービス | ASP | 状況 |
+|---|---|---|
+| Omiai | afb | **審査申請済み・結果待ち** → 承認後にafbのOmiaiリンクに差し替え |
+| マリッシュ | A8.net | **稼働中** `a8mat=4B1QDV+5O7P9U+3N2M+75EZ5` |
+
+### Omiaiアフィリエイトリンクの差し替え方法
+afb審査通過後、以下のファイルの `https://www.omiai-ibj.com/` を afbのトラッキングURLに変更：
+- `app/page.tsx`（2箇所）
+- `app/articles/page.tsx`（バナー内）
+- `app/articles/[slug]/page.tsx`（バナー内）
+
+---
+
+## 計測・分析ツール
+
+| ツール | 状況 | 確認方法 |
+|---|---|---|
+| Google Analytics | **稼働中** `G-ZSRPK871DM` | analytics.google.com |
+| Google Search Console | **設定済み** メタタグ認証 | search.google.com/search-console |
+| sitemap.xml | **自動生成** `/sitemap.xml` | GSCでインデックス登録状況を確認 |
+
+### GSCでの次回確認事項
+- sitemap.xmlのステータス（数日後に「成功」になっているはず）
+- 検索流入キーワードのモニタリング（1〜2週間後から始まる）
+
+---
+
+## 記事一覧（2026-04-22時点）
+
+| # | スラグ | タイトル | 追加日 |
+|---|---|---|---|
+| 1 | married-men-lies-on-dating-apps | 既婚男性がよく使う嘘TOP5 | 初期 |
+| 2 | how-to-find-sincere-men-on-omiai | Omiaiで誠実な男性を見抜く7つのポイント | 初期 |
+| 3 | married-men-profile-photo-red-flags | プロフィール写真で分かる危険なサイン | 初期 |
+| 4 | sincerity-checklist-for-first-date | 初デートで確認すべき誠実さのチェックリスト | 初期 |
+| 5 | omiai-success-story | Omiai体験談：真剣な出会いができた理由 | 初期 |
+| 6 | omiai-vs-marrish-comparison | OmiaiとMarrish比較 | 初期 |
+| 7 | how-to-find-sincere-men-on-dating-apps | マッチングアプリで誠実な男性を見つける10のポイント | 初期 |
+| 8 | dating-apps-married-men-ranking | 既婚男性が紛れ込みやすいアプリの特徴 | 初期 |
+| 9 | married-men-line-message-patterns | 既婚男性のLINE・メッセージパターン図鑑 | 第2弾 |
+| 10 | filtering-strategy-for-sincere-men | 誠実な男性だけと出会うフィルタリング戦略 | 第2弾 |
+| 11 | recovery-roadmap-after-dating-married-man | 既婚男性と付き合ってしまった後の心理回復ロードマップ | 第2弾 |
+| 12 | sincere-test-7-questions | 誠実さを測る「7つの質問」実験レポート | 第2弾 |
+| 13 | marrish-married-men-how-to-spot | マリッシュに既婚男性はいる？見抜き方 | 第2弾 |
+| 14 | married-men-sincerity-phrases | 既婚男性が使う"誠実アピール"フレーズ集 | 第3弾（4/22追加） |
+| 15 | video-call-married-men-detection | ビデオ通話で既婚男性を見抜く方法 | 第3弾（4/22追加） |
+| 16 | omiai-vs-pairs-safety-comparison | Omiai vs Pairs 安全性・真剣度比較 | 第3弾（4/22追加） |
+| 17 | recovering-after-dating-married-man | 既婚男性と別れた後の気持ちの整理と立ち直り方 | 第3弾（4/22追加） |
+| 18 | traits-of-people-who-married-via-dating-apps | マッチングアプリで本当に結婚できた人の共通点5つ | 第3弾（4/22追加） |
+
+---
+
+## X（Twitter）アカウント
+
+- **アカウント：** @sincere_dating
+- **プロフィール：** 設定済み（桜アイコン・バナー・Bio・Website）
+- **初投稿：** 2026-04-22 完了（記事3「プロフィール写真の見抜き方」）
+- **投稿プラン：** `SNS運用プラン.md` 参照（4週間分 = 5/19まで）
+
+### 次回投稿（4/23）
+```
+【既婚男性のLINEパターン、知ってる？】
+
+「おはよう」だけのLINEが毎朝来るのに
+週末は急に既読無視…
+
+これ、経験したことある人いない？
+
+既婚男性のメッセージってパターンがあって
+知ってると怖いくらい当たる。
+
+https://sincere-dating.jp/articles/married-men-line-message-patterns
+
+#マッチングアプリ #LINE #既婚男性
+```
+時間：7:30
+
+---
+
+## エージェント分担ルール
+
+| 役割 | 内容 | ツール |
+|---|---|---|
+| **記事執筆エージェント** | `lib/articles.ts` に新記事を追加 | Glob/Read/Edit |
+| **SNS運用エージェント** | X投稿・`SNS運用プラン.md`更新 | Chrome MCP |
+| **サイト保守エージェント** | バナー追加・デザイン修正・Vercel確認 | Edit/Bash |
+| **分析エージェント** | GA・GSC確認・流入レポート | Chrome MCP |
+
+### 注意事項
+- `lib/articles.ts` を編集する際は**必ず配列の末尾（`];` の直前）に追加**する
+- 記事追加後は `git push origin main` でVercelに自動デプロイ
+- TypeScriptのエラーに注意（特にimgタグの `border` は `style={{ border: 0 }}` で）
+
+---
+
+## 今後のタスク（優先順）
+
+### 短期（〜1週間）
+- [ ] afb審査結果確認 → Omiaiリンク差し替え
+- [ ] X毎日投稿継続（`SNS運用プラン.md`のスケジュール通り）
+- [ ] GSCでsitemap確認（数日後）
+
+### 中期（〜1ヶ月）
+- [ ] 検索流入キーワード確認（GSC）して追加記事を計画
+- [ ] アフィリエイト収益モニタリング（afb・A8ダッシュボード）
+- [ ] X フォロワー数確認（目標：1ヶ月で100人）
+- [ ] 内部リンク強化（記事間のリンク追加）
+
+### 長期（〜3ヶ月）
+- [ ] 月間PV 1,000達成
+- [ ] Omiai成果報酬1件達成
+- [ ] 記事数を30本に増やす
+- [ ] Pinterest・Instagramへの展開検討
+
+---
+
+## トラブルシューティング
+
+| 問題 | 原因 | 対処法 |
+|---|---|---|
+| Vercelデプロイエラー | TypeScriptエラー | `npm run build` でローカル確認 |
+| 記事が表示されない | articles.ts の配列外に追加 | `];` の前に追加されているか確認 |
+| sitemap.xmlが取得できない | デプロイ直後 | 数時間〜1日待つ |
+| X投稿が文字数オーバー | URLは23文字換算、絵文字は2文字 | 本文を短くする |
+
+---
+
+*このドキュメントは新しいセッション開始時に必ず読んでください。*
