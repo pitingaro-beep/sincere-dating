@@ -31,6 +31,48 @@ export default async function ArticlePage({ params }: Props) {
     notFound();
   }
 
+  // インラインマークダウン（太字・リンク）を解析してReact要素に変換
+  const parseInline = (text: string, keyPrefix: string) => {
+    const parts = text.split(/(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g);
+    return parts.map((part, j) => {
+      if (part.startsWith("**") && part.endsWith("**")) {
+        return (
+          <strong key={`${keyPrefix}-${j}`} className="font-bold text-gray-800">
+            {part.replace(/\*\*/g, "")}
+          </strong>
+        );
+      }
+      const linkMatch = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+      if (linkMatch) {
+        const [, label, href] = linkMatch;
+        const isInternal = href.startsWith("/");
+        if (isInternal) {
+          return (
+            <Link
+              key={`${keyPrefix}-${j}`}
+              href={href}
+              className="text-pink-500 underline hover:text-pink-600"
+            >
+              {label}
+            </Link>
+          );
+        }
+        return (
+          <a
+            key={`${keyPrefix}-${j}`}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-pink-500 underline hover:text-pink-600"
+          >
+            {label}
+          </a>
+        );
+      }
+      return <span key={`${keyPrefix}-${j}`}>{part}</span>;
+    });
+  };
+
   // マークダウン的な見出し・段落をHTMLに変換（シンプル実装）
   const formatContent = (content: string) => {
     return content
@@ -94,21 +136,11 @@ export default async function ArticlePage({ params }: Props) {
             </ol>
           );
         }
-        // 強調テキストのある通常段落
-        if (block.includes("**")) {
-          const parts = block.split(/(\*\*[^*]+\*\*)/g);
+        // 強調テキストまたはリンクのある通常段落
+        if (block.includes("**") || block.includes("[")) {
           return (
             <p key={i} className="text-gray-600 leading-relaxed my-3">
-              {parts.map((part, j) => {
-                if (part.startsWith("**") && part.endsWith("**")) {
-                  return (
-                    <strong key={j} className="font-bold text-gray-800">
-                      {part.replace(/\*\*/g, "")}
-                    </strong>
-                  );
-                }
-                return <span key={j}>{part}</span>;
-              })}
+              {parseInline(block, `p-${i}`)}
             </p>
           );
         }
@@ -126,9 +158,13 @@ export default async function ArticlePage({ params }: Props) {
   };
 
   const allArticles = getAllArticles();
-  const relatedArticles = allArticles
-    .filter((a) => a.slug !== article.slug)
-    .slice(0, 3);
+  const sameCategory = allArticles.filter(
+    (a) => a.slug !== article.slug && a.category === article.category
+  );
+  const otherArticles = allArticles.filter(
+    (a) => a.slug !== article.slug && a.category !== article.category
+  );
+  const relatedArticles = [...sameCategory, ...otherArticles].slice(0, 3);
 
   return (
     <div>
