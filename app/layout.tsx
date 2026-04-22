@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: "誠実な出会いナビ | マッチングアプリで安全に素敵な恋愛を",
   description:
     "女性を守る誠実な出会いガイド。既婚男性の見抜き方、Omiaiの安全な使い方など実体験に基づく情報をお届けします。",
+  verification: {
+    google: "5LUAa2upcdJ_u0EJYdfl5MoDKev5-OcOha9_-dxbSkI",
+  },
 };
 
 export default function RootLayout({
