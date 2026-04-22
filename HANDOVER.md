@@ -1,5 +1,5 @@
 # 誠実な出会いナビ 引き継ぎドキュメント
-最終更新：2026-04-22
+最終更新：2026-04-22 16:30
 
 ---
 
@@ -72,7 +72,7 @@ afb審査通過後、以下のファイルの `https://www.omiai-ibj.com/` を a
 
 ---
 
-## 記事一覧（2026-04-22時点）
+## 記事一覧（2026-04-22時点）計30本
 
 | # | スラグ | タイトル | 追加日 |
 |---|---|---|---|
@@ -89,11 +89,23 @@ afb審査通過後、以下のファイルの `https://www.omiai-ibj.com/` を a
 | 11 | recovery-roadmap-after-dating-married-man | 既婚男性と付き合ってしまった後の心理回復ロードマップ | 第2弾 |
 | 12 | sincere-test-7-questions | 誠実さを測る「7つの質問」実験レポート | 第2弾 |
 | 13 | marrish-married-men-how-to-spot | マリッシュに既婚男性はいる？見抜き方 | 第2弾 |
-| 14 | married-men-sincerity-phrases | 既婚男性が使う"誠実アピール"フレーズ集 | 第3弾（4/22追加） |
-| 15 | video-call-married-men-detection | ビデオ通話で既婚男性を見抜く方法 | 第3弾（4/22追加） |
-| 16 | omiai-vs-pairs-safety-comparison | Omiai vs Pairs 安全性・真剣度比較 | 第3弾（4/22追加） |
-| 17 | recovering-after-dating-married-man | 既婚男性と別れた後の気持ちの整理と立ち直り方 | 第3弾（4/22追加） |
-| 18 | traits-of-people-who-married-via-dating-apps | マッチングアプリで本当に結婚できた人の共通点5つ | 第3弾（4/22追加） |
+| 14 | married-men-sincerity-phrases | 既婚男性が使う"誠実アピール"フレーズ集 | 第3弾（4/22） |
+| 15 | video-call-married-men-detection | ビデオ通話で既婚男性を見抜く方法 | 第3弾（4/22） |
+| 16 | omiai-vs-pairs-safety-comparison | Omiai vs Pairs 安全性・真剣度比較 | 第3弾（4/22） |
+| 17 | recovering-after-dating-married-man | 既婚男性と別れた後の気持ちの整理と立ち直り方 | 第3弾（4/22） |
+| 18 | traits-of-people-who-married-via-dating-apps | マッチングアプリで本当に結婚できた人の共通点5つ | 第3弾（4/22） |
+| 19 | omiai-profile-writing-guide | Omiaiのプロフィールを魅力的に書く方法 | 第4弾（4/22） |
+| 20 | what-to-know-before-starting-dating-apps | マッチングアプリを始める前に知っておきたい5つのこと | 第4弾（4/22） |
+| 21 | women-who-fall-for-married-men-traits | 既婚男性に引っかかりやすい女性の特徴と対策 | 第4弾（4/22） |
+| 22 | omiai-fees-and-plans-2026 | Omiaiの料金・プラン徹底解説【2026年版】 | 第4弾（4/22） |
+| 23 | marrish-fees-and-review-2026 | マリッシュの料金・評判・実際に使ってみた感想 | 第4弾（4/22） |
+| 24 | weekend-unavailable-men-married-or-not | 「週末に会えない」男性は既婚者？確認すべき3つの質問 | 第5弾（4/22） |
+| 25 | men-who-avoid-phone-calls | 電話を嫌がる男性の本当の理由 | 第5弾（4/22） |
+| 26 | sudden-decrease-in-messages-red-flags | 急に連絡が減った…フェードアウトの兆候 | 第5弾（4/22） |
+| 27 | burnout-from-konkatsu | 婚活疲れを感じたら読む記事 | 第5弾（4/22） |
+| 28 | restart-dating-apps-after-heartbreak | 傷ついた後のマッチングアプリ再開ガイド | 第5弾（4/22） |
+| 29 | with-vs-omiai-comparison | with（ウィズ）とOmiaiを比較 | 第5弾（4/22） |
+| 30 | zexy-en-musubi-vs-omiai-comparison | ゼクシィ縁結びとOmiaiの違いを徹底比較 | 第5弾（4/22） |
 
 ---
 
@@ -104,23 +116,15 @@ afb審査通過後、以下のファイルの `https://www.omiai-ibj.com/` を a
 - **初投稿：** 2026-04-22 完了（記事3「プロフィール写真の見抜き方」）
 - **投稿プラン：** `SNS運用プラン.md` 参照（4週間分 = 5/19まで）
 
-### 次回投稿（4/23）
-```
-【既婚男性のLINEパターン、知ってる？】
+### スケジュール済み自動投稿（Claude Scheduledタスクで管理）
+| 日時 | 内容 | 状態 |
+|---|---|---|
+| 4/22 16:23 | 記事9「既婚男性のLINEパターン」 | ✅ 投稿済み（テスト実行で意図せず） |
+| 4/23 7:30 | 記事1「既婚男性がよく使う嘘」 | ⏰ 予約済み |
+| 4/23 21:30 | 記事3「プロフィール写真の危険なサイン」 | ⏰ 予約済み |
 
-「おはよう」だけのLINEが毎朝来るのに
-週末は急に既読無視…
-
-これ、経験したことある人いない？
-
-既婚男性のメッセージってパターンがあって
-知ってると怖いくらい当たる。
-
-https://sincere-dating.jp/articles/married-men-line-message-patterns
-
-#マッチングアプリ #LINE #既婚男性
-```
-時間：7:30
+### 次回手動投稿が必要な日（4/24〜）
+SNS運用プラン.mdのスケジュール表を参照して投稿するか、Scheduledタスクを追加作成してください。
 
 ---
 
@@ -143,20 +147,20 @@ https://sincere-dating.jp/articles/married-men-line-message-patterns
 ## 今後のタスク（優先順）
 
 ### 短期（〜1週間）
-- [ ] afb審査結果確認 → Omiaiリンク差し替え
-- [ ] X毎日投稿継続（`SNS運用プラン.md`のスケジュール通り）
+- [ ] afb審査結果確認 → Omiaiリンク差し替え（4箇所）
+- [ ] X毎日投稿継続（4/24以降をScheduledタスクに追加 or 手動投稿）
 - [ ] GSCでsitemap確認（数日後）
 
 ### 中期（〜1ヶ月）
 - [ ] 検索流入キーワード確認（GSC）して追加記事を計画
 - [ ] アフィリエイト収益モニタリング（afb・A8ダッシュボード）
 - [ ] X フォロワー数確認（目標：1ヶ月で100人）
-- [ ] 内部リンク強化（記事間のリンク追加）
+- [ ] SNS運用プラン.mdに記事24〜30の投稿文を追加作成
 
 ### 長期（〜3ヶ月）
 - [ ] 月間PV 1,000達成
 - [ ] Omiai成果報酬1件達成
-- [ ] 記事数を30本に増やす
+- [x] 記事数を30本に増やす ← **4/22達成済み**
 - [ ] Pinterest・Instagramへの展開検討
 
 ---
