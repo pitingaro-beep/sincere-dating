@@ -190,21 +190,20 @@ export default function Home() {
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                border={0}
                 width={600}
                 height={200}
                 alt="恋活・婚活・再婚活マッチング【マリッシュ】"
                 src="https://www25.a8.net/svt/bgt?aid=260421331343&wid=001&eno=01&mid=s00000016987001201000&mc=1"
-                style={{ maxWidth: "100%", height: "auto" }}
+                style={{ maxWidth: "100%", height: "auto", border: 0 }}
               />
             </a>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              border={0}
               width={1}
               height={1}
               src="https://www16.a8.net/0.gif?a8mat=4B1QDV+5O7P9U+3N2M+75EZ5"
               alt=""
+              style={{ border: 0 }}
             />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center text-sm text-gray-600">

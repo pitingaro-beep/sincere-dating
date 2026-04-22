@@ -201,6 +201,45 @@ export default async function ArticlePage({ params }: Props) {
               Omiaiを無料で始める →
             </a>
           </div>
+
+          {/* marrish バナー（記事内） */}
+          <div className="my-10 p-6 md:p-8 bg-white rounded-2xl shadow-sm border border-pink-100 text-center">
+            <p className="text-xs text-gray-400 mb-2 uppercase tracking-widest">PR・アフィリエイト</p>
+            <p className="font-bold text-gray-800 text-lg mb-1">再婚・バツイチも歓迎</p>
+            <p className="text-gray-500 text-sm mb-5">marrishは恋活・婚活・再婚活を応援するマッチングアプリです</p>
+            <div className="flex justify-center mb-4">
+              <a
+                href="https://px.a8.net/svt/ejp?a8mat=4B1QDV+5O7P9U+3N2M+75EZ5"
+                rel="nofollow"
+                target="_blank"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  width={600}
+                  height={200}
+                  alt="恋活・婚活・再婚活マッチング【マリッシュ】"
+                  src="https://www25.a8.net/svt/bgt?aid=260421331343&wid=001&eno=01&mid=s00000016987001201000&mc=1"
+                  style={{ maxWidth: "100%", height: "auto", border: 0 }}
+                />
+              </a>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                width={1}
+                height={1}
+                src="https://www16.a8.net/0.gif?a8mat=4B1QDV+5O7P9U+3N2M+75EZ5"
+                alt=""
+                style={{ border: 0 }}
+              />
+            </div>
+            <a
+              href="https://px.a8.net/svt/ejp?a8mat=4B1QDV+5O7P9U+3N2M+75EZ5"
+              rel="nofollow"
+              target="_blank"
+              className="inline-block bg-pink-400 hover:bg-pink-500 text-white font-bold py-3 px-8 rounded-full transition-colors shadow-md"
+            >
+              marrishを無料で始める →
+            </a>
+          </div>
         </div>
       </section>
 
