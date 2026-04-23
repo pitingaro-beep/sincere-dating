@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getArticleBySlug, getAllArticles } from "@/lib/articles";
 import { notFound } from "next/navigation";
 
@@ -20,6 +21,11 @@ export async function generateMetadata({ params }: Props) {
   return {
     title: `${article.title} | 誠実な出会いナビ`,
     description: article.excerpt,
+    openGraph: article.image
+      ? {
+          images: [{ url: article.image, width: 1200, height: 630 }],
+        }
+      : undefined,
   };
 }
 
@@ -31,15 +37,28 @@ export default async function ArticlePage({ params }: Props) {
     notFound();
   }
 
-  // インラインマークダウン（太字・リンク）を解析してReact要素に変換
+  // インラインマークダウン（太字・ハイライト・リンク）を解析してReact要素に変換
   const parseInline = (text: string, keyPrefix: string) => {
-    const parts = text.split(/(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g);
+    const parts = text.split(/(\*\*[^*]+\*\*|==[^=]+==#?|\[[^\]]+\]\([^)]+\))/g);
     return parts.map((part, j) => {
+      // **太字**
       if (part.startsWith("**") && part.endsWith("**")) {
         return (
           <strong key={`${keyPrefix}-${j}`} className="font-bold text-gray-800">
             {part.replace(/\*\*/g, "")}
           </strong>
+        );
+      }
+      // ==ピンクマーカー==
+      if (part.startsWith("==") && part.endsWith("==")) {
+        return (
+          <mark
+            key={`${keyPrefix}-${j}`}
+            className="bg-pink-100 text-pink-700 px-1 rounded font-medium"
+            style={{ textDecoration: "none" }}
+          >
+            {part.replace(/==/g, "")}
+          </mark>
         );
       }
       const linkMatch = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
@@ -136,6 +155,24 @@ export default async function ArticlePage({ params }: Props) {
             </ol>
           );
         }
+        // 本文中の画像 ![alt](url)
+        const imgMatch = block.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+        if (imgMatch) {
+          const [, alt, src] = imgMatch;
+          return (
+            <div key={i} className="my-8 rounded-2xl overflow-hidden shadow-sm">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={src}
+                alt={alt}
+                className="w-full h-64 object-cover"
+              />
+              {alt && (
+                <p className="text-xs text-gray-400 text-center py-2 bg-gray-50">{alt}</p>
+              )}
+            </div>
+          );
+        }
         // 強調テキストまたはリンクのある通常段落
         if (block.includes("**") || block.includes("[")) {
           return (
@@ -197,6 +234,22 @@ export default async function ArticlePage({ params }: Props) {
           <p className="text-gray-500 text-sm">{article.date}</p>
         </div>
       </section>
+
+      {/* アイキャッチ画像 */}
+      {article.image && (
+        <div className="w-full max-w-3xl mx-auto px-4 -mt-4 mb-0 relative z-10">
+          <div className="rounded-2xl overflow-hidden shadow-md">
+            <Image
+              src={article.image}
+              alt={article.title}
+              width={800}
+              height={420}
+              className="w-full h-56 md:h-72 object-cover"
+              priority
+            />
+          </div>
+        </div>
+      )}
 
       {/* 記事本文 */}
       <section className="py-12 px-4">
