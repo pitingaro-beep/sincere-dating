@@ -67,7 +67,6 @@ export default function ArticlesPage() {
       {/* Omiai バナー */}
       <section className="py-12 px-4 bg-pink-50">
         <div className="max-w-2xl mx-auto text-center">
-          <p className="text-xs text-gray-400 mb-2">PR・アフィリエイト</p>
           <h3 className="text-xl font-bold text-gray-800 mb-3">
             真剣な出会いを探しているなら
           </h3>
@@ -88,7 +87,6 @@ export default function ArticlesPage() {
       {/* marrish バナー */}
       <section className="py-12 px-4 bg-white">
         <div className="max-w-3xl mx-auto text-center">
-          <p className="text-xs text-gray-400 mb-2 uppercase tracking-widest">PR・アフィリエイト</p>
           <h3 className="text-xl font-bold text-gray-800 mb-2">再婚・バツイチも歓迎</h3>
           <p className="text-gray-500 text-sm mb-6">marrishは恋活・婚活・再婚活を応援するマッチングアプリです</p>
           <div className="flex justify-center mb-5">

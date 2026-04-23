@@ -142,9 +142,6 @@ export default function Home() {
               background: "linear-gradient(135deg, #F8A4B8 0%, #E07090 100%)",
             }}
           >
-            <p className="text-white text-sm font-medium mb-2 opacity-90">
-              PR・アフィリエイト
-            </p>
             <h2 className="text-white text-2xl md:text-3xl font-bold mb-4">
               誠実な出会いを求めるなら
               <br />
@@ -175,7 +172,6 @@ export default function Home() {
       {/* marrish紹介バナー */}
       <section className="py-16 px-4" style={{ background: "#FDF7F9" }}>
         <div className="max-w-3xl mx-auto">
-          <p className="text-center text-xs text-gray-400 mb-6 uppercase tracking-widest">PR・アフィリエイト</p>
           <h2 className="text-2xl font-bold text-center text-gray-800 mb-2">
             再婚・バツイチも歓迎
           </h2>

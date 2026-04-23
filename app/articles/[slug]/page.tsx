@@ -167,9 +167,6 @@ export default async function ArticlePage({ params }: Props) {
                 alt={alt}
                 className="w-full h-64 object-cover"
               />
-              {alt && (
-                <p className="text-xs text-gray-400 text-center py-2 bg-gray-50">{alt}</p>
-              )}
             </div>
           );
         }
@@ -272,7 +269,6 @@ export default async function ArticlePage({ params }: Props) {
               background: "linear-gradient(135deg, #F8A4B8 0%, #E07090 100%)",
             }}
           >
-            <p className="text-white text-xs mb-2 opacity-80">PR・アフィリエイト</p>
             <p className="text-white font-bold text-lg mb-2">
               誠実な出会いを求めるなら Omiai
             </p>
@@ -293,7 +289,6 @@ export default async function ArticlePage({ params }: Props) {
 
           {/* marrish バナー（記事内） */}
           <div className="my-10 p-6 md:p-8 bg-white rounded-2xl shadow-sm border border-pink-100 text-center">
-            <p className="text-xs text-gray-400 mb-2 uppercase tracking-widest">PR・アフィリエイト</p>
             <p className="font-bold text-gray-800 text-lg mb-1">再婚・バツイチも歓迎</p>
             <p className="text-gray-500 text-sm mb-5">marrishは恋活・婚活・再婚活を応援するマッチングアプリです</p>
             <div className="flex justify-center mb-4">
