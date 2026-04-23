@@ -263,6 +263,7 @@ export default async function ArticlePage({ params }: Props) {
           </div>
 
           {/* Omiai バナー（記事内） */}
+          <p className="text-right text-xs text-gray-400 mb-1">PR</p>
           <div
             className="rounded-2xl p-6 md:p-8 my-10 text-center shadow-sm"
             style={{
@@ -288,6 +289,7 @@ export default async function ArticlePage({ params }: Props) {
           </div>
 
           {/* marrish バナー（記事内） */}
+          <p className="text-right text-xs text-gray-400 mb-1">PR</p>
           <div className="my-10 p-6 md:p-8 bg-white rounded-2xl shadow-sm border border-pink-100 text-center">
             <p className="font-bold text-gray-800 text-lg mb-1">再婚・バツイチも歓迎</p>
             <p className="text-gray-500 text-sm mb-5">marrishは恋活・婚活・再婚活を応援するマッチングアプリです</p>

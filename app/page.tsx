@@ -155,6 +155,7 @@ export default function Home() {
       {/* Omiai紹介バナー */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-3xl mx-auto">
+          <p className="text-right text-xs text-gray-400 mb-1">PR</p>
           <div
             className="rounded-3xl p-8 md:p-12 text-center shadow-md"
             style={{
@@ -191,6 +192,7 @@ export default function Home() {
       {/* marrish紹介バナー */}
       <section className="py-16 px-4" style={{ background: "#FDF7F9" }}>
         <div className="max-w-3xl mx-auto">
+          <p className="text-right text-xs text-gray-400 mb-1">PR</p>
           <h2 className="text-2xl font-bold text-center text-gray-800 mb-2">
             再婚・バツイチも歓迎
           </h2>
