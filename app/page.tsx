@@ -43,46 +43,65 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 特徴セクション */}
+      {/* カテゴリーセクション */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-bold text-center text-gray-800 mb-2">
-            このサイトでできること
+            読みたいテーマから探す
           </h2>
-          <p className="text-center text-gray-500 mb-12 text-sm">
-            3つのポイントで、あなたの出会いをサポートします
+          <p className="text-center text-gray-500 mb-10 text-sm">
+            カテゴリーを選んで、目的の記事をすぐに見つけよう
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* ポイント1 */}
-            <div className="text-center p-6 rounded-2xl bg-pink-50 border border-pink-100">
-              <div className="text-5xl mb-4">📖</div>
-              <h3 className="text-lg font-bold text-gray-800 mb-3">
-                ① 実体験に基づく情報
-              </h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                実際にマッチングアプリを使った経験者の視点から、リアルな情報をお届けします。理想論ではなく、現実に役立つ知識を。
-              </p>
-            </div>
-            {/* ポイント2 */}
-            <div className="text-center p-6 rounded-2xl bg-rose-50 border border-rose-100">
-              <div className="text-5xl mb-4">🔍</div>
-              <h3 className="text-lg font-bold text-gray-800 mb-3">
-                ② 既婚男性の見抜き方
-              </h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                プロフィール写真、メッセージのパターン、デートの行動など、多角的な視点から危険なサインを解説します。
-              </p>
-            </div>
-            {/* ポイント3 */}
-            <div className="text-center p-6 rounded-2xl bg-fuchsia-50 border border-fuchsia-100">
-              <div className="text-5xl mb-4">✨</div>
-              <h3 className="text-lg font-bold text-gray-800 mb-3">
-                ③ 安全なOmiaiの使い方
-              </h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                真剣な出会いを求めるならOmiaiがおすすめ。安全に使うためのコツや、誠実な相手の見つけ方を徹底解説。
-              </p>
-            </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              {
+                emoji: "🚩",
+                label: "危険な男性の\n見抜き方",
+                desc: "既婚男性・怪しいサインを見極める",
+                color: "bg-rose-50 border-rose-100 hover:bg-rose-100",
+                textColor: "text-rose-500",
+                href: "/articles?category=%E5%8D%B1%E9%99%BA%E3%81%AA%E7%94%B7%E6%80%A7%E3%81%AE%E8%A6%8B%E6%8A%9C%E3%81%8D%E6%96%B9",
+              },
+              {
+                emoji: "💡",
+                label: "誠実な出会いの\nコツ",
+                desc: "安全に素敵な恋愛をするヒント",
+                color: "bg-yellow-50 border-yellow-100 hover:bg-yellow-100",
+                textColor: "text-yellow-500",
+                href: "/articles?category=%E8%AA%A0%E5%AE%9F%E3%81%AA%E5%87%BA%E4%BC%9A%E3%81%84%E3%81%AE%E3%82%B3%E3%83%84",
+              },
+              {
+                emoji: "📱",
+                label: "アプリ比較・\n選び方",
+                desc: "Omiai・マリッシュなど徹底比較",
+                color: "bg-blue-50 border-blue-100 hover:bg-blue-100",
+                textColor: "text-blue-500",
+                href: "/articles?category=%E3%82%A2%E3%83%97%E3%83%AA%E6%AF%94%E8%BC%83%E3%83%BB%E9%81%B8%E3%81%B3%E6%96%B9",
+              },
+              {
+                emoji: "💕",
+                label: "バツイチ・\n再婚活",
+                desc: "もう一度幸せになりたい方へ",
+                color: "bg-pink-50 border-pink-100 hover:bg-pink-100",
+                textColor: "text-pink-500",
+                href: "/articles?category=%E3%83%90%E3%83%84%E3%82%A4%E3%83%81%E3%83%BB%E5%86%8D%E5%A9%9A%E6%B4%BB",
+              },
+            ].map((cat) => (
+              <Link
+                key={cat.href}
+                href={cat.href}
+                className={`flex flex-col items-center text-center p-5 rounded-2xl border transition-colors ${cat.color} group`}
+              >
+                <div className="text-4xl mb-3">{cat.emoji}</div>
+                <h3 className={`text-sm font-bold ${cat.textColor} mb-2 whitespace-pre-line leading-snug`}>
+                  {cat.label}
+                </h3>
+                <p className="text-gray-500 text-xs leading-relaxed">{cat.desc}</p>
+                <span className={`mt-3 text-xs font-medium ${cat.textColor} group-hover:underline`}>
+                  記事を見る →
+                </span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
