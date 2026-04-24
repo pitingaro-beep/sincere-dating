@@ -202,7 +202,7 @@ export default function Home() {
           <div className="flex justify-center mb-6">
             <a
               href="https://px.a8.net/svt/ejp?a8mat=4B1QDV+5O7P9U+3N2M+75EZ5"
-              rel="nofollow"
+              rel="nofollow sponsored"
               target="_blank"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -243,7 +243,7 @@ export default function Home() {
           <div className="text-center mt-8">
             <a
               href="https://px.a8.net/svt/ejp?a8mat=4B1QDV+5O7P9U+3N2M+75EZ5"
-              rel="nofollow"
+              rel="nofollow sponsored"
               target="_blank"
               className="inline-block bg-pink-400 hover:bg-pink-500 text-white font-bold py-4 px-10 rounded-full transition-colors shadow-md text-lg"
             >
