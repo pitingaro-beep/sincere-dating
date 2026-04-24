@@ -97,21 +97,80 @@ export default async function ArticlePage({ params }: Props) {
     return content
       .split("\n\n")
       .map((block, i) => {
-        if (block.startsWith("## ")) {
+        // H1見出し
+        if (block.startsWith("# ") && !block.startsWith("## ")) {
+          return (
+            <h1
+              key={i}
+              className="text-2xl font-bold text-gray-800 mt-8 mb-6"
+            >
+              {parseInline(block.replace(/^# /, ""), `h1-${i}`)}
+            </h1>
+          );
+        }
+        // H2見出し
+        if (block.startsWith("## ") && !block.startsWith("### ")) {
           return (
             <h2
               key={i}
               className="text-xl font-bold text-gray-800 mt-10 mb-4 pb-2 border-b-2 border-pink-100"
             >
-              {block.replace("## ", "")}
+              {parseInline(block.replace(/^## /, ""), `h2-${i}`)}
             </h2>
           );
+        }
+        // H3見出し
+        if (block.startsWith("### ")) {
+          return (
+            <h3
+              key={i}
+              className="text-lg font-bold text-gray-700 mt-8 mb-3"
+            >
+              {parseInline(block.replace(/^### /, ""), `h3-${i}`)}
+            </h3>
+          );
+        }
+        // 水平線 ---
+        if (block.trim() === "---") {
+          return <hr key={i} className="my-8 border-pink-100" />;
         }
         if (block.startsWith("**") && block.endsWith("**")) {
           return (
             <p key={i} className="font-bold text-gray-800 mt-6 mb-2">
               {block.replace(/\*\*/g, "")}
             </p>
+          );
+        }
+        // テーブル
+        if (block.includes("|") && block.includes("---")) {
+          const rows = block.split("\n").filter((l) => l.includes("|"));
+          const headers = rows[0].split("|").filter((c) => c.trim());
+          const dataRows = rows.slice(2);
+          return (
+            <div key={i} className="my-6 overflow-x-auto">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="bg-pink-50">
+                    {headers.map((h, j) => (
+                      <th key={j} className="border border-pink-100 px-3 py-2 text-left font-bold text-gray-700">
+                        {h.trim()}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {dataRows.map((row, j) => (
+                    <tr key={j} className={j % 2 === 0 ? "bg-white" : "bg-pink-50/30"}>
+                      {row.split("|").filter((c) => c.trim()).map((cell, k) => (
+                        <td key={k} className="border border-pink-100 px-3 py-2 text-gray-600">
+                          {parseInline(cell.trim(), `td-${i}-${j}-${k}`)}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           );
         }
         // チェックリスト（- [ ]）
@@ -122,7 +181,7 @@ export default async function ArticlePage({ params }: Props) {
               {items.map((item, j) => (
                 <li key={j} className="flex items-start gap-2 text-gray-600">
                   <span className="mt-0.5 w-4 h-4 flex-shrink-0 border-2 border-pink-300 rounded inline-block" />
-                  <span>{item.replace("- [ ] ", "")}</span>
+                  <span>{parseInline(item.replace("- [ ] ", ""), `cl-${i}-${j}`)}</span>
                 </li>
               ))}
             </ul>
@@ -136,7 +195,7 @@ export default async function ArticlePage({ params }: Props) {
               {items.map((item, j) => (
                 <li key={j} className="flex items-start gap-2 text-gray-600">
                   <span className="text-pink-400 mt-0.5">•</span>
-                  <span>{item.replace("- ", "")}</span>
+                  <span>{parseInline(item.replace(/^- /, ""), `li-${i}-${j}`)}</span>
                 </li>
               ))}
             </ul>
@@ -149,7 +208,7 @@ export default async function ArticlePage({ params }: Props) {
             <ol key={i} className="my-4 space-y-2 list-decimal list-inside">
               {items.map((item, j) => (
                 <li key={j} className="text-gray-600">
-                  {item.replace(/^\d+\.\s*/, "")}
+                  {parseInline(item.replace(/^\d+\.\s*/, ""), `ol-${i}-${j}`)}
                 </li>
               ))}
             </ol>
@@ -170,8 +229,8 @@ export default async function ArticlePage({ params }: Props) {
             </div>
           );
         }
-        // 強調テキストまたはリンクのある通常段落
-        if (block.includes("**") || block.includes("[")) {
+        // 強調テキスト・ハイライト・リンクのある通常段落
+        if (block.includes("**") || block.includes("[") || block.includes("==")) {
           return (
             <p key={i} className="text-gray-600 leading-relaxed my-3">
               {parseInline(block, `p-${i}`)}
