@@ -52,9 +52,9 @@
 |---|---|---|
 | Omiai | afb（afi-b.com） | **審査中・メール待ち** → 承認後にafbのOmiaiリンクに差し替え |
 | マリッシュ | A8.net | **稼働中** `a8mat=4B1QDV+5O7P9U+3N2M+75EZ5` |
-| Photojoy | A8.net | **提携完了**（4/24）報酬：500円/件 → 出口記事作成後にリンク設置 |
-| マッチングフォト | A8.net | **提携完了**（4/24）報酬：購入額の10% → 出口記事作成後にリンク設置 |
-| OurPhoto | A8.net | **提携完了**（4/24）報酬：1,650円/件 → 出口記事作成後にリンク設置 |
+| Photojoy | A8.net | **稼働中** `a8mat=4B1SPS+9T22IA+4HMW+5YJRM` 報酬：500円/件 |
+| マッチングフォト | A8.net | **稼働中** `a8mat=4B1SPS+A1E4Z6+4MM2+5YJRM` 報酬：購入額の10% |
+| OurPhoto | A8.net | **稼働中** `a8mat=4B1SPS+A1ZKKY+58O8+5YRHE` 報酬：1,650円/件 |
 
 ### Omiaiアフィリエイトリンクの差し替え方法
 afb審査通過後、以下のファイルの `https://www.omiai-ibj.com/` を afbのトラッキングURLに変更：
